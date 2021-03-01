@@ -1,24 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import NotesListPage from './components/NotesListPage';
+import NotesPage from './components/NotesPage';
+import Note from './utils/Note';
+import { Pages } from './utils/Pages';
+
+const lists : Note[] = [
+  {
+    title: "my life",
+    content: "my life is a good thing!!!",
+    author: "rafael moura"
+  },
+  {
+    title: "my life",
+    content: "my life is a good thing!!! I dont want nothing anymore",
+    author: "Rafael Moura"
+  },
+  {
+    title: "my life",
+    content: "its my life",
+    author: "Rafael Moura"
+  },
+]
 
 function App() {
+  const [activePage, setActivePage] = useState<Pages>(Pages.new)
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <button onClick={() => setActivePage(Pages.new)}> new note </button>
+    <button onClick={() => setActivePage(Pages.list)}> notes </button>
+    {
+      activePage == Pages.new ? (
+        <NotesPage/>
+      ) : activePage == Pages.list && (
+        <NotesListPage list={lists}/>
+      )
+    }
     </div>
   );
 }
