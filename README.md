@@ -5,4 +5,6 @@
  - TypeScript
  - React
  - Spring-boot
- - mysql
+ - MySQL
+ - Docker
+

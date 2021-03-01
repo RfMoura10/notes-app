@@ -2,5 +2,5 @@ export default interface Note {
     title: string,
     content: string,
     author: string,
-    date?: Date | null
+    date?: string | null
 }
